@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // bunifuElipse1
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1
             // 
             this.btnSair.AutoSize = true;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(239, 75);
+            this.btnSair.Location = new System.Drawing.Point(235, 75);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(28, 16);
             this.btnSair.TabIndex = 0;
@@ -59,25 +60,33 @@ namespace WindowsFormsApp1
             // 
             // lblMensagem2
             // 
-            this.lblMensagem2.AutoSize = true;
-            this.lblMensagem2.Location = new System.Drawing.Point(79, 45);
+            this.lblMensagem2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMensagem2.AutoEllipsis = true;
+            this.lblMensagem2.Location = new System.Drawing.Point(10, 34);
             this.lblMensagem2.Name = "lblMensagem2";
-            this.lblMensagem2.Size = new System.Drawing.Size(0, 13);
+            this.lblMensagem2.Size = new System.Drawing.Size(478, 41);
             this.lblMensagem2.TabIndex = 1;
+            this.lblMensagem2.Text = "______________________________________________";
+            this.lblMensagem2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblMensagem
             // 
-            this.lblMensagem.AutoSize = true;
-            this.lblMensagem.Location = new System.Drawing.Point(79, 9);
+            this.lblMensagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMensagem.AutoEllipsis = true;
+            this.lblMensagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensagem.Location = new System.Drawing.Point(9, 9);
             this.lblMensagem.Name = "lblMensagem";
-            this.lblMensagem.Size = new System.Drawing.Size(0, 13);
+            this.lblMensagem.Size = new System.Drawing.Size(481, 25);
             this.lblMensagem.TabIndex = 2;
+            this.lblMensagem.Text = "______________";
+            this.lblMensagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmMensagem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 100);
+            this.ClientSize = new System.Drawing.Size(500, 100);
             this.Controls.Add(this.lblMensagem);
             this.Controls.Add(this.lblMensagem2);
             this.Controls.Add(this.btnSair);

@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             var context = new OficinaBDEntities();
             if (txtCodigo.Text=="")
             {
+
                 var cliente = new tbCliente()
                 {
                     nome = txtNome.Text,
@@ -89,17 +90,24 @@ namespace WindowsFormsApp1
             txtEstado.Clear();
         }
 
-        private void dtgCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-            txtCodigo.Text = dtgCliente.Rows[e.RowIndex].Cells["idCliente"].Value.ToString();
-            txtNome.Text=dtgCliente.Rows[e.RowIndex].Cells["nome"].Value.ToString();
-            txtTelefone.Text = dtgCliente.Rows[e.RowIndex].Cells["Telefone"].Value.ToString();
-            txtCPF.Text = dtgCliente.Rows[e.RowIndex].Cells["CPF"].Value.ToString();
-            txtEndereco.Text = dtgCliente.Rows[e.RowIndex].Cells["Endereco"].Value.ToString();
-            txtCep.Text = dtgCliente.Rows[e.RowIndex].Cells["Cep"].Value.ToString();
-            txtCidade.Text = dtgCliente.Rows[e.RowIndex].Cells["Cidade"].Value.ToString();
-            txtEstado.Text = dtgCliente.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
+            if (txtCodigo.Text!="")
+            {
+                var context = new OficinaBDEntities();
+                int codigo = Convert.ToInt32(txtCodigo.Text);
+                tbCliente cliente = context.tbCliente.First(p => p.idCliente == codigo);
+
+                context.tbCliente.Attach(cliente);
+                context.Set<tbCliente>().Remove(cliente);
+                context.SaveChanges();
+            }
+            mesagem = new frmMensagem();
+            mesagem.mensagem = "Excluir";
+            dtgCliente.DataSource = Todos;
+            mesagem.Show();
         }
+
 
         private void txtCPF_TextChanged(object sender, EventArgs e)
         {
@@ -114,10 +122,24 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
-               
             }
-            
+
         }
+
+        private void dtgCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigo.Text = dtgCliente.Rows[e.RowIndex].Cells["idCliente"].Value.ToString();
+            txtNome.Text = dtgCliente.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+            txtTelefone.Text = dtgCliente.Rows[e.RowIndex].Cells["Telefone"].Value.ToString();
+            txtCPF.Text = dtgCliente.Rows[e.RowIndex].Cells["CPF"].Value.ToString();
+            txtEndereco.Text = dtgCliente.Rows[e.RowIndex].Cells["Endereco"].Value.ToString();
+            txtCep.Text = dtgCliente.Rows[e.RowIndex].Cells["Cep"].Value.ToString();
+            txtCidade.Text = dtgCliente.Rows[e.RowIndex].Cells["Cidade"].Value.ToString();
+            txtEstado.Text = dtgCliente.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
+        }
+
+
+
+
     }
 }

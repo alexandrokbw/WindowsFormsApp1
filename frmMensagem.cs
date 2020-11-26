@@ -39,14 +39,17 @@ namespace WindowsFormsApp1
 
                 case "Salvar":
                     lblMensagem.Text = "Sucesso!";
+                    lblMensagem2.Text = "Os dados foram salvos com sucesso!";
                     this.BackColor = Color.Green;
                     break;
                 case "Atualizar":
                     lblMensagem.Text = "Dados atualizados!";
+                    lblMensagem2.Text = "Os dados foram atualizados com sucesso!";
                     this.BackColor = Color.LightBlue;
                     break;
                 case "Excluir":
                     lblMensagem.Text = "Excluido!";
+                    lblMensagem2.Text = "Os dados foram excluidos com sucesso!";
                     this.BackColor = Color.LightGoldenrodYellow;
                     break;
             }
@@ -56,7 +59,7 @@ namespace WindowsFormsApp1
         {
             if (Opacity > 0.50)
             {
-                Opacity -= 0.03;
+                Opacity -= 0.05;
             }
             else
             {
