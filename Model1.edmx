@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OficinaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbAtendente">
+          <Key>
+            <PropertyRef Name="idProduto" />
+          </Key>
+          <Property Name="idProduto" Type="int" Nullable="false" />
+          <Property Name="idFornecedor" Type="nchar" MaxLength="10" />
+          <Property Name="descricao" Type="nchar" MaxLength="10" />
+          <Property Name="preco" Type="nchar" MaxLength="10" />
+          <Property Name="estado" Type="nchar" MaxLength="10" />
+          <Property Name="cep" Type="nchar" MaxLength="10" />
+          <Property Name="telefone" Type="nchar" MaxLength="10" />
+          <Property Name="cpf" Type="nchar" MaxLength="10" />
+          <Property Name="login" Type="nchar" MaxLength="10" />
+          <Property Name="senha" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbCliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="endereco" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="cidade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cep" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="telefone" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="cpf" Type="nvarchar" MaxLength="14" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbFornecedor">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="nome" Type="nchar" MaxLength="10" />
+          <Property Name="endereco" Type="nchar" MaxLength="10" />
+          <Property Name="cidade" Type="nchar" MaxLength="10" />
+          <Property Name="estado" Type="nchar" MaxLength="10" />
+          <Property Name="cep" Type="nchar" MaxLength="10" />
+          <Property Name="telefone" Type="nchar" MaxLength="10" />
+          <Property Name="cnpj" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbLote">
+          <Key>
+            <PropertyRef Name="idPedidoFornecedor" />
+          </Key>
+          <Property Name="idPedidoFornecedor" Type="int" Nullable="false" />
+          <Property Name="idProduto" Type="nchar" MaxLength="10" />
+          <Property Name="idFornecedor" Type="nchar" MaxLength="10" />
+          <Property Name="idAtendente" Type="nchar" MaxLength="10" />
+          <Property Name="quantidade" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbPedidoCliente">
+          <Key>
+            <PropertyRef Name="idPedidoCliente" />
+          </Key>
+          <Property Name="idPedidoCliente" Type="int" Nullable="false" />
+          <Property Name="idProduto" Type="nchar" MaxLength="10" />
+          <Property Name="idCliente" Type="nchar" MaxLength="10" />
+          <Property Name="idLote" Type="nchar" MaxLength="10" />
+          <Property Name="idAtendente" Type="nchar" MaxLength="10" />
+          <Property Name="idPedidoFornecedor" Type="nchar" MaxLength="10" />
+          <Property Name="data" Type="nchar" MaxLength="10" />
+          <Property Name="quantidade" Type="nchar" MaxLength="10" />
+          <Property Name="valor" Type="nchar" MaxLength="10" />
+          <Property Name="stausPedidoCliente" Type="nchar" MaxLength="10" />
+          <Property Name="observacoes" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbPedidoFornecedor">
+          <Key>
+            <PropertyRef Name="idPedidoCliente" />
+          </Key>
+          <Property Name="idPedidoCliente" Type="int" Nullable="false" />
+          <Property Name="idProduto" Type="nchar" MaxLength="10" />
+          <Property Name="idCliente" Type="nchar" MaxLength="10" />
+          <Property Name="idLote" Type="nchar" MaxLength="10" />
+          <Property Name="idAtendente" Type="nchar" MaxLength="10" />
+          <Property Name="idPedidoFornecedor" Type="nchar" MaxLength="10" />
+          <Property Name="data" Type="nchar" MaxLength="10" />
+          <Property Name="quantidade" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbProduto">
+          <Key>
+            <PropertyRef Name="idLote" />
+          </Key>
+          <Property Name="idLote" Type="int" Nullable="false" />
+          <Property Name="idProduto" Type="nchar" MaxLength="10" />
+          <Property Name="codigo" Type="nchar" MaxLength="10" />
+          <Property Name="lote" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbVeiculo">
+          <Key>
+            <PropertyRef Name="idVeiculo" />
+          </Key>
+          <Property Name="idVeiculo" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="nchar" MaxLength="10" />
+          <Property Name="modelo" Type="nchar" MaxLength="10" />
+          <Property Name="marca" Type="nchar" MaxLength="10" />
+          <Property Name="placa" Type="nchar" MaxLength="10" />
+          <Property Name="cor" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="OficinaBDModelStoreContainer">
+          <EntitySet Name="tbAtendente" EntityType="Self.tbAtendente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbCliente" EntityType="Self.tbCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbFornecedor" EntityType="Self.tbFornecedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbLote" EntityType="Self.tbLote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPedidoCliente" EntityType="Self.tbPedidoCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPedidoFornecedor" EntityType="Self.tbPedidoFornecedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbProduto" EntityType="Self.tbProduto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbVeiculo" EntityType="Self.tbVeiculo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OficinaBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbAtendente">
+          <Key>
+            <PropertyRef Name="idProduto" />
+          </Key>
+          <Property Name="idProduto" Type="Int32" Nullable="false" />
+          <Property Name="idFornecedor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="descricao" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="preco" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="telefone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cpf" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="senha" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbCliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="endereco" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cep" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbFornecedor">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="endereco" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cidade" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="telefone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cnpj" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbLote">
+          <Key>
+            <PropertyRef Name="idPedidoFornecedor" />
+          </Key>
+          <Property Name="idPedidoFornecedor" Type="Int32" Nullable="false" />
+          <Property Name="idProduto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idFornecedor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idAtendente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="quantidade" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbPedidoCliente">
+          <Key>
+            <PropertyRef Name="idPedidoCliente" />
+          </Key>
+          <Property Name="idPedidoCliente" Type="Int32" Nullable="false" />
+          <Property Name="idProduto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idCliente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idLote" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idAtendente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idPedidoFornecedor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="data" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="quantidade" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="valor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="stausPedidoCliente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="observacoes" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbPedidoFornecedor">
+          <Key>
+            <PropertyRef Name="idPedidoCliente" />
+          </Key>
+          <Property Name="idPedidoCliente" Type="Int32" Nullable="false" />
+          <Property Name="idProduto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idCliente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idLote" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idAtendente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idPedidoFornecedor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="data" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="quantidade" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbProduto">
+          <Key>
+            <PropertyRef Name="idLote" />
+          </Key>
+          <Property Name="idLote" Type="Int32" Nullable="false" />
+          <Property Name="idProduto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="codigo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="lote" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbVeiculo">
+          <Key>
+            <PropertyRef Name="idVeiculo" />
+          </Key>
+          <Property Name="idVeiculo" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="modelo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="marca" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="placa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="OficinaBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbAtendente" EntityType="Self.tbAtendente" />
+          <EntitySet Name="tbCliente" EntityType="Self.tbCliente" />
+          <EntitySet Name="tbFornecedor" EntityType="Self.tbFornecedor" />
+          <EntitySet Name="tbLote" EntityType="Self.tbLote" />
+          <EntitySet Name="tbPedidoCliente" EntityType="Self.tbPedidoCliente" />
+          <EntitySet Name="tbPedidoFornecedor" EntityType="Self.tbPedidoFornecedor" />
+          <EntitySet Name="tbProduto" EntityType="Self.tbProduto" />
+          <EntitySet Name="tbVeiculo" EntityType="Self.tbVeiculo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OficinaBDModelStoreContainer" CdmEntityContainer="OficinaBDEntities">
+          <EntitySetMapping Name="tbAtendente">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbAtendente">
+              <MappingFragment StoreEntitySet="tbAtendente">
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="idFornecedor" ColumnName="idFornecedor" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="preco" ColumnName="preco" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCliente">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbCliente">
+              <MappingFragment StoreEntitySet="tbCliente">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbFornecedor">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbFornecedor">
+              <MappingFragment StoreEntitySet="tbFornecedor">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbLote">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbLote">
+              <MappingFragment StoreEntitySet="tbLote">
+                <ScalarProperty Name="idPedidoFornecedor" ColumnName="idPedidoFornecedor" />
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="idFornecedor" ColumnName="idFornecedor" />
+                <ScalarProperty Name="idAtendente" ColumnName="idAtendente" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPedidoCliente">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbPedidoCliente">
+              <MappingFragment StoreEntitySet="tbPedidoCliente">
+                <ScalarProperty Name="idPedidoCliente" ColumnName="idPedidoCliente" />
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idLote" ColumnName="idLote" />
+                <ScalarProperty Name="idAtendente" ColumnName="idAtendente" />
+                <ScalarProperty Name="idPedidoFornecedor" ColumnName="idPedidoFornecedor" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="stausPedidoCliente" ColumnName="stausPedidoCliente" />
+                <ScalarProperty Name="observacoes" ColumnName="observacoes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPedidoFornecedor">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbPedidoFornecedor">
+              <MappingFragment StoreEntitySet="tbPedidoFornecedor">
+                <ScalarProperty Name="idPedidoCliente" ColumnName="idPedidoCliente" />
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idLote" ColumnName="idLote" />
+                <ScalarProperty Name="idAtendente" ColumnName="idAtendente" />
+                <ScalarProperty Name="idPedidoFornecedor" ColumnName="idPedidoFornecedor" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbProduto">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbProduto">
+              <MappingFragment StoreEntitySet="tbProduto">
+                <ScalarProperty Name="idLote" ColumnName="idLote" />
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbVeiculo">
+            <EntityTypeMapping TypeName="OficinaBDModel.tbVeiculo">
+              <MappingFragment StoreEntitySet="tbVeiculo">
+                <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="placa" ColumnName="placa" />
+                <ScalarProperty Name="cor" ColumnName="cor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
